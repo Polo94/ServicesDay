@@ -1,7 +1,9 @@
-require 'dotenv'
-require 'themoviedb-api'
+
 
 class SearchMovie
+
+require 'dotenv'
+require 'themoviedb-api'
 
     def initialize(request)
 
