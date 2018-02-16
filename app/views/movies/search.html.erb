@@ -1,13 +1,11 @@
 <div class="container" align="center">
 <h1> Search results for <%= @search %> </h1>
 <br>
-<p  align="left" > <%= link_to('Back', root_path, class: "btn btn-success") %> </p> 
+<p> <%= link_to('Back', root_path, class: "btn btn-success") %> </p> 
 
 <% if @movies[0]==nil %>
-
-	<div class="alert-danger" align="center" style="height: 100px; width: 300px;"> 
-		<p style="padding-top: 40px;"> SORRY BUT NOTHING COULD BE FOUND</p>
-	</div>
+		<p> SORRY BUT NOTHING COULD BE FOUND</p>
+	
 <% else %>
 
 	<table class="table table-striped">
@@ -24,17 +22,15 @@
 
     	<tr>
     		<% if movie.poster_path == nil %>
-    			<td align="center" style="max-width: 200px;">
     				<p>no image</p>
-    			</td>
+    
     		<% else %>
-    	  	<td align="center" style="max-width: 200px;">
     	  		<img src = <%= @img + movie.poster_path %> style="max-width:25%; max-height:25%;">
-    	  	</td>
+    	  	
     	  <% end %>
-      	<td style="max-width: 100px;">
+      	
       		<%= movie.title %>		
-      	</td>
+      	
       	<td><%= movie.release_date %></td>
       	<td><%= movie.director %></td>
         <td></td>
@@ -47,7 +43,6 @@
 
 <% end %>
 
-<hr />
 
 
 </div>
