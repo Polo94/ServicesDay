@@ -1,16 +1,22 @@
 class MoviesController < ApplicationController
-  
+
   def index
   end
 
-  def create
-  	@moviename = params[:movie]
-  	redirect_to search_path(@movie_name)
-  end
-
   def search
-  	@search = params[:result]
-  	@results = SearchMovie.new(@movie_name).perform
+
+  	@search = search_params[:movie]
+
+
+  	@movies = SearchMovie.new(@search).perform
+
   	@img = "https://image.tmdb.org/t/p/w500/"
   end
+
+  private 
+
+  def search_params
+  	params.require(:search).permit(:movie)
+  end
+
 end
