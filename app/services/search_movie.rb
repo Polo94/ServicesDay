@@ -32,6 +32,6 @@ require 'themoviedb-api'
          end   
 
     end
-end
+
 
 end
