@@ -1,0 +1,18 @@
+<h1>Resultat de la recherche</h1>
+<%= link_to "Chercher un autre film", root_path %>
+
+
+<% unless @results.count == 0 %>
+  <% @results.each do |result| %> 
+    
+    <h3> <%= result.title %> sorti le <%= result.release_date %> </h3>
+    <h5> Directeur de film : <%= result.director %> </h5>
+    <%= result.overview %>
+
+  <%end%>
+
+<% else %>
+
+<h3> Aucun résultat :-( </h3>
+
+<% end %>

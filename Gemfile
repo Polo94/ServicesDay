@@ -15,7 +15,8 @@ gem 'jbuilder'
 #BYME#
 gem 'bootstrap', '~>4.0.0'
 gem 'dotenv-rails'
-gem 'themoviedb'
+
+gem 'themoviedb-api'
 
 group :development, :test do
   gem 'sqlite3'
