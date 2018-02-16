@@ -1,34 +1,35 @@
-class SearchMovie
-
 require 'dotenv'
 require 'themoviedb-api'
 
-def initialize(input)
-  @movie = input
-end
+class SearchMovie
 
-def perform
-	log_in_to_mvdb
-	action(@movie)
-end
+    def initialize(request)
 
-def log_in_to_mvdb
-Tmdb::Api.key(ENV['MOVIE_API_KEY'])
-end
+        @search = request
+    end
 
-def action
-  Tmdb::Search.movie(movie).results.each do |movie|
-    movie_director = Tmdb::Movie.director(movie.id).each do |director|
-    movie[:director] = director.name
-  end
-end
+    def perform
 
+        puts "connecting"
 
+        Tmdb::Api.key(ENV['MOVIE_API_KEY'])
 
+        puts "searching"
+        @result =    Tmdb::Search.movie(@search).results
 
+        @result.each do |movie|
+            directed(movie)
+        end
 
-def find_movies
-	
+    end
+
+    def directed(movie)
+
+         Tmdb::Movie.director(movie.id).each do |director|
+             movie[:director] = director.name        
+         end   
+
+    end
 end
 
 end
